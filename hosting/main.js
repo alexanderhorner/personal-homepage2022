@@ -39,8 +39,8 @@ form.addEventListener("submit", (e) => {
   }).then(async response => {
     const jsonResponse = await response.json()
     if (jsonResponse.status != "success") {
-        document.querySelector(".error").textContent = jsonResponse.message
-        throw jsonResponse.message
+      document.querySelector(".error").textContent = jsonResponse.message
+      throw jsonResponse.message
     }
     if (!response.ok) {
       console.log(response);
