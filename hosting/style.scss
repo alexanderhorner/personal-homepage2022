@@ -3,9 +3,9 @@
 }
 
 html, body {
-  background-color: hsl(30, 5%, 15%);
+  background-color: hsl(249, 5%, 12%);
   color: #FFFFFF;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Nunito Sans', sans-serif;
 }
 
 body {
@@ -24,7 +24,7 @@ header {
   display: flex;
   height: 90px;
   align-items: center;
-  z-index: 100;
+  justify-content: end;
   position: absolute;
   left: 0;
   top: 0;
@@ -32,7 +32,6 @@ header {
 
   .logo {
       height: 30px;
-      font-family: 'Playfair Display', serif;
       font-weight: bold;
       margin-left: 1rem;
   }
@@ -63,65 +62,109 @@ header {
 }
 
 .top-section {
-  z-index: 50;
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  // display: grid;
-  // place-items: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 20px 1fr 20px;
+  grid-template-rows: 17% auto auto 1fr auto;
+  height: 100vh;
 
-  background-image: url('./img/glass-circle.jpg');
-  background-size: 170%;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  @media only screen and (min-aspect-ratio: 1/1) {
-      background-size: auto 100%;
-
-      @media only screen and (min-width: 1000px) {
-          background-size: 1000px;
-      }
+  @media only screen and (min-width: 600px) {
+    grid-template-columns: 50px 95fr 10fr 90fr;
+    // If you adjust the 50px margin on the left, you also have to adust how the container size is calculated in .title
+    grid-template-rows: 10fr min-content min-content 8fr min-content 100px;
   }
 
-  h1 {
-      text-align: center;
-      font-size: 4.375em;
-      text-shadow: 0px 4px 4px hsla(0, 0%, 0%, 0.25);
+  * {
+    grid-column: 2 / span 1;
+  }
 
-      @media only screen and (min-width: 600px) {
-          font-size: 5.625em;
-      }
+  .title {
+    --percent-of-container-width: calc(0.17 * (100vw - 20px));
+    font-size: var(--percent-of-container-width);
+    color: hsl(274, 100%, 72%);
+    margin: 0;
+    grid-row: 2;
+    align-self: center;
+    font-family: 'Montserrat', sans-serif;
+
+    @media only screen and (min-width: 600px) {
+      grid-column: 2 / span 2;
+      grid-row: 2 / span 1;
+      --percent-of-container-width: calc(0.057 * (100vw - 50px));
+      font-size: max(min(var(--percent-of-container-width), 90px), 50px);
+    }
+  }
+
+  .secondary-title {
+    grid-row: 3;
+    
+
+    @media only screen and (min-width: 600px) {
+      font-size: 22px;
+      grid-column: 2 / span 1;
+      grid-row: 3 / span 1;
+    }
   }
 
   .scroll-down {
-      position: absolute;
-      left: 50%;
-      bottom: 40px;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+    padding-top: 12px;
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+  
+    .svgline {
+      margin-top: -12px;
+  
+      .cls-1 {
+        width: 100%;
+        fill: none;
+        stroke: hsl(0deg, 0%, 60%);
+        stroke-miterlimit: 10;
+        stroke-width: 2px;
+        animation: 2s linear 0s infinite pulse2;
+        animation-direction: normal;
+      }
+  
+      .line1 {
+        animation-delay: 0s;
+      }
+      .line2 {
+        animation-delay: 0.15s;
+      }
+      .line3 {
+        animation-delay: 0.3s;
+      }
+    }
+    display: none;
+    
 
-      div {
-          font-size: 22px;
-          font-weight: bold;
-      }
-      
-      img {
-          margin-top: 10px;
-          width: 32px;
-      }
+    @media only screen and (min-width: 600px) {
+      display: initial;
+      grid-column: 2 / span 1;
+      grid-row: 5 / span 1;
+    }
+  }
+
+  .hero-illustration {
+    margin-bottom: -1px;
+    grid-row: 5;
+    pointer-events: none;
+    width: 100%;
+    max-width: 800px;
+    align-self: end;
+    justify-self: end;
+
+    @media only screen and (min-width: 600px) {
+      grid-column: 3 / -1;
+      grid-row: 1 / -1;
+    }
   }
 }
 
 .about-me {
-  background-color: hsl(30, 5%, 12%);
-  margin-top: 100vh;
+  // background-color: hsl(30, 5%, 12%);
+  background-color: hsl(0, 0%, 90%);
+  color: black;
   width: 100%;
   padding-top: 100px;
   padding-bottom: 200px;
@@ -259,4 +302,42 @@ header {
       width: 200px;
   }
 
+}
+
+
+// Scroll down animation
+@keyframes pulse {
+    0% {
+        opacity: 0.5;
+    }
+    35% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+    65% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes pulse2 {
+    0% {
+        stroke: hsl(0deg, 0%, 60%);
+    }
+    35% {
+        stroke: hsl(0deg, 0%, 60%);
+    }
+    50% {
+        stroke: hsl(0deg, 0%, 100%);
+    }
+    65% {
+        stroke: hsl(0deg, 0%, 60%);
+    }
+    100% {
+        stroke: hsl(0deg, 0%, 60%);
+    }
 }

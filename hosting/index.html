@@ -9,7 +9,8 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Playfair+Display:wght@400;700;800&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&family=Playfair+Display:wght@400;700;800&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Nunito+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
     <!-- Favicons -->
     <link rel="apple-touch-icon" sizes="180x180" href="./favicons/apple-touch-icon.png">
@@ -20,26 +21,37 @@
     <meta name="msapplication-TileColor" content="#292725">
     <meta name="theme-color" content="#292725">
 
+    <link rel="stylesheet" href="./style.scss">
+
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
     <script type="module" src="/main.js" defer></script>
   </head>
   <body>
+    <div class="real-height-indicator" style="pointer-events: none; opacity: 0; position: absolute; left: 0; top: 0; right: 0; bottom: 0;"></div>
+
     <div id="app">
       
       <header>
-        <img class="logo" src="./img/AH-logo.svg" style="margin-right: auto" alt="Logo consisting of the letters A and H">
+        <!-- <img class="logo" src="./img/AH-logo.svg" style="margin-right: auto" alt="Logo consisting of the letters A and H"> -->
         <a href="#aboutme">About me</a>
         <a href="#contact">Contact</a>
       </header>
   
-      <section name="top" class="top-section">    
-        <h1>Alexander Horner</h1>
+      <section name="top" class="top-section">
+
+        <h1 class="title">Alexander Horner</h1>
+
+        <div class="secondary-title">Web Development and Design</div>
   
         <div class="scroll-down">
-          <div>scroll</div>
-          <img src="./img/arrow-down.svg" alt="Arrow down">
+          <svg class="svgline" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 19"><polyline class="cls-1 line1" points="1 1 17 17 33 1"/></svg>
+          <svg class="svgline" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 19"><polyline class="cls-1 line2" points="1 1 17 17 33 1"/></svg>
+          <svg class="svgline" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 34 19"><polyline class="cls-1 line3" points="1 1 17 17 33 1"/></svg>
         </div>
+
+        <img class="hero-illustration" src="./img/hero-illustration.svg" alt="Illustration showing small people working on a big laptop, symbolizing development.">
+
       </section>
   
       <section id="aboutme" class="about-me">

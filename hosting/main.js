@@ -1,4 +1,3 @@
-import './style.scss'
 import autosize from "autosize"
 
 
@@ -59,3 +58,19 @@ form.addEventListener("submit", (e) => {
     document.querySelector(".submit").disabled = false;
   })
 })
+
+// get safari vw and set hero to it
+{
+  const heroSection = document.querySelector('.top-section')
+  const realHeightIndicator = document.querySelector('.real-height-indicator')
+
+  const validataSize = () => {
+    if (heroSection.offsetHeight - realHeightIndicator.offsetHeight > 5) {
+      console.log('correcting size');
+      heroSection.style.height = `min(100vh, ${realHeightIndicator.offsetHeight}px)`
+    }
+  }
+
+  validataSize()
+  window.addEventListener('resize', validataSize)
+}
