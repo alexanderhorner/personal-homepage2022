@@ -65,7 +65,7 @@ form.addEventListener("submit", (e) => {
   const realHeightIndicator = document.querySelector('.real-height-indicator')
 
   const validataSize = () => {
-    if (heroSection.offsetHeight - realHeightIndicator.offsetHeight > 5) {
+    if (heroSection.offsetHeight - realHeightIndicator.offsetHeight > 5 || heroSection.offsetHeight - realHeightIndicator.offsetHeight < 5) {
       console.log('correcting size');
       heroSection.style.height = `min(100vh, ${realHeightIndicator.offsetHeight}px)`
     }
