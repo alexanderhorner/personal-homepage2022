@@ -4,6 +4,7 @@
   },
   "scripts": {
     "build": "cd functions/ && npm run build && cd ../hosting && npm run build && cd ..",
-    "serve": "npm run build && firebase emulators:start"
+    "serve": "npm run build && firebase emulators:start",
+    "deploy": "npm run build && firebase deploy"
   }
 }

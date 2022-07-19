@@ -20,7 +20,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // form
 const form = document.querySelector("form")
-const actionPath = 'http://localhost:5001/personal-homepage2022/europe-west1/formSubmit';
+let actionPath = 'https://europe-west1-personal-homepage2022.cloudfunctions.net/formSubmit'
+if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+  actionPath = 'http://localhost:5001/personal-homepage2022/europe-west1/formSubmit'
+}
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
