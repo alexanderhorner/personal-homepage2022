@@ -1,23 +1,58 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import { setupCounter } from './counter.js'
+import './style.scss'
+import autosize from "autosize"
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
 
-setupCounter(document.querySelector('#counter'))
+// autosize message field
+autosize(document.querySelector('.message'));
+
+
+// Scroll to section
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    document.querySelector(this.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
+});
+
+
+// form
+const form = document.querySelector("form")
+const actionPath = 'http://localhost:5001/personal-homepage2022/europe-west1/formSubmit';
+
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  
+  document.querySelector(".submit").disabled = true;
+
+  const formData = new FormData(form)
+  const formDataJSON = JSON.stringify(Object.fromEntries(formData))
+
+  fetch(actionPath, {
+    method: 'post',
+    body: formDataJSON,
+  }).then(async response => {
+    const jsonResponse = await response.json()
+    if (jsonResponse.status != "success") {
+        document.querySelector(".error").textContent = jsonResponse.message
+        throw jsonResponse.message
+    }
+    if (!response.ok) {
+      console.log(response);
+      throw `${response.statusText} (${response.status})`
+    }
+    return response
+  }).then(response => {
+    document.querySelector(".success").style.display = "block"
+    document.querySelector("form").style.display = "none"
+    document.querySelector(".error").style.display = "none"
+  })
+  .catch(error => {
+    console.error(error);
+    document.querySelector(".error").textContent = `Error: ${error}. Please try again later.`
+    document.querySelector(".error").style.display = "block"
+    document.querySelector(".submit").disabled = false;
+  })
+})
