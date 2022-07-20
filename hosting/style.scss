@@ -16,6 +16,7 @@
 
 html,
 body {
+  overflow-x: hidden;
   background-color: hsl(274, 5%, 12%);
   color: #ffffff;
   font-family: "Nunito Sans", sans-serif;
@@ -79,11 +80,19 @@ header {
   grid-template-columns: 20px 1fr 20px;
   grid-template-rows: 17% auto auto 1fr auto;
   height: 100vh;
+  min-height: fit-content;
+
 
   @media only screen and (min-width: 600px) {
     grid-template-columns: 50px 95fr 10fr 90fr;
     // If you adjust the 50px margin on the left, you also have to adust how the container size is calculated in .title
-    grid-template-rows: 10fr min-content min-content 8fr min-content 100px;
+    grid-template-rows: 10fr min-content min-content 10fr;
+
+    @media only screen and (min-height: 600px) {
+      grid-template-columns: 50px 95fr 10fr 90fr;
+      // If you adjust the 50px margin on the left, you also have to adust how the container size is calculated in .title
+      grid-template-rows: 10fr min-content min-content 8fr 100px;
+    }
   }
 
   * {
@@ -124,8 +133,14 @@ header {
     animation: fadeIn 0.75s ease-out 0s 1 normal none;
     padding-top: 12px;
     width: 50px;
-    display: flex;
     flex-direction: column;
+    display: none;
+
+    @media only screen and (min-width: 600px) and (min-height: 600px) {
+      display: flex;
+      grid-column: 2 / span 1;
+      grid-row: 5 / span 1;
+    }
 
     .svgline {
       margin-top: -12px;
@@ -150,18 +165,12 @@ header {
         animation-delay: 0.3s;
       }
     }
-    display: none;
-
-    @media only screen and (min-width: 600px) {
-      display: initial;
-      grid-column: 2 / span 1;
-      grid-row: 5 / span 1;
-    }
   }
 
   .hero-illustration {
     margin-bottom: -1px;
     grid-row: 5;
+    grid-column: 2 / -1;
     pointer-events: none;
     width: 100%;
     max-width: 800px;
