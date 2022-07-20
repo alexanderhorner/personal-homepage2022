@@ -81,7 +81,7 @@ form.addEventListener("submit", (e) => {
 
 // Responsive AOS
 // {
-//   AOS.init();
+AOS.init();
 
 //   const elements = document.querySelectorAll('[data-]')
 
