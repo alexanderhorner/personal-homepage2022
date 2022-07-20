@@ -1,3 +1,15 @@
+@keyframes fadeIn {
+  from {
+    filter: blur(20px) opacity(0.5);
+    transform: translateY(-25px);
+  }
+  to {
+    filter: blur(0) opacity(1);
+    transform: translateY(0px);
+  }
+}
+
+
 * {
   box-sizing: border-box;
 }
@@ -79,6 +91,7 @@ header {
   }
 
   .title {
+    animation: fadeIn 0.75s ease-out 0s 1 normal none;
     --percent-of-container-width: calc(0.17 * (100vw - 20px));
     font-size: var(--percent-of-container-width);
     color: hsl(274, 100%, 72%);
@@ -96,6 +109,7 @@ header {
   }
 
   .secondary-title {
+    animation: fadeIn 0.75s ease-out 0s 1 normal none;
     color: hsl(274deg, 20%, 90%);
     grid-row: 3;
 
@@ -107,6 +121,7 @@ header {
   }
 
   .scroll-down {
+    animation: fadeIn 0.75s ease-out 0s 1 normal none;
     padding-top: 12px;
     width: 50px;
     display: flex;

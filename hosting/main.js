@@ -1,4 +1,7 @@
 import autosize from "autosize"
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+
 
 
 // autosize message field
@@ -74,3 +77,17 @@ form.addEventListener("submit", (e) => {
   validataSize()
   window.addEventListener('resize', validataSize)
 }
+
+
+// Responsive AOS
+// {
+//   AOS.init();
+
+//   const elements = document.querySelectorAll('[data-]')
+
+//   const setAattributes = () => {
+//     const do
+//   }
+
+//   window.addEventListener('resize', setAattributes);
+// }
