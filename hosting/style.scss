@@ -270,6 +270,12 @@ header {
       grid-column: 2;
     }
 
+    .verification-text {
+      @media only screen and (min-width: 680px) {
+        grid-column: 1;
+      }
+    } 
+
     @media only screen and (min-width: 680px) {
       grid-template-rows: initial;
       grid-template-columns: 2fr 4fr;
