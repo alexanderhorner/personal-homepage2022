@@ -259,16 +259,27 @@ header {
   }
 
   form {
-    width: calc(100% - 40px);
+    width: 100%;
     max-width: 600px;
     margin: 0 auto;
     display: grid;
+    grid-template-columns: 20px 1fr 20px;
     grid-template-rows: repeat(10, 40px auto);
+
+    * {
+      grid-column: 2;
+    }
 
     @media only screen and (min-width: 500px) {
       grid-template-rows: initial;
       grid-template-columns: 2fr 4fr;
       row-gap: 2em;
+    }
+
+    
+    .g-recaptcha-container {
+      max-width: 100%;
+      overflow: hidden;
     }
   }
 
@@ -278,7 +289,10 @@ header {
     max-height: 3.5rem;
     display: flex;
     align-items: center;
-    grid-column: 1 / span 1;
+
+    @media only screen and (min-width: 500px) { 
+      grid-column: 1 / span 1;
+    }
   }
 
   textarea {
@@ -291,7 +305,6 @@ header {
     font-family: "Nunito Sans", sans-serif;
     font-size: 1em;
     color: #ffffff;
-    grid-column: 1 / span 1;
     border: none;
     background-image: none;
     background-color: hsl(30, 5%, 20%);

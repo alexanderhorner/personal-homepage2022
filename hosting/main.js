@@ -69,7 +69,6 @@ form.addEventListener("submit", (e) => {
 
   const validataSize = () => {
     if (heroSection.offsetHeight - realHeightIndicator.offsetHeight > 5 || heroSection.offsetHeight - realHeightIndicator.offsetHeight < 5) {
-      console.log('correcting size');
       heroSection.style.height = `min(100vh, ${realHeightIndicator.offsetHeight}px)`
     }
   }
@@ -91,3 +90,22 @@ AOS.init();
 
 //   window.addEventListener('resize', setAattributes);
 // }
+
+// Responsive google captcha
+{
+  const googlecaptchaBig = document.querySelector('.g-recaptcha')
+  const googlecaptchaCompact = document.querySelector('.g-recaptcha.g-recaptcha--compact')
+
+
+  const setAttribute = () => {
+    if (window.innerWidth < 302 + 40) {
+      googlecaptchaBig.style.display = 'none'
+      googlecaptchaCompact.style.display = ''
+    } else {
+      googlecaptchaBig.style.display = ''
+      googlecaptchaCompact.style.display = 'none'
+    }
+  }
+  setAttribute()
+  window.addEventListener('resize', setAttribute);
+}
