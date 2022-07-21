@@ -52,7 +52,7 @@ header {
 
   a {
     color: inherit;
-    text-decoration: none; /* no underline */
+    text-decoration: none;
 
     &:hover {
       text-decoration: underline;
@@ -244,7 +244,7 @@ header {
 .contact-me {
   padding-top: 100px;
   padding-bottom: 200px;
-  background-color: hsl(30, 5%, 5%);
+  background-color: hsl(274, 5%, 5%);
 
   h2 {
     margin-bottom: 2em;
@@ -340,6 +340,36 @@ header {
     display: none;
     margin: 0 auto;
     width: 200px;
+  }
+}
+
+a:not(header a) {
+  &:link {
+    color: hsl(274, 100%, 74%);
+    text-decoration: underline;
+  }
+  &:visited {
+    color: hsl(274, 100%, 74%);
+  }
+  &:hover {
+    color: hsl(274, 100%, 60%);
+    text-decoration: underline;
+  }
+  &:active {
+    color: hsl(274, 100%, 60%);
+  }
+}
+
+
+
+footer {
+  text-align: center;
+  background-color: hsl(274, 5%, 5%);
+  font-size: 0.75rem;
+  color: hsl(274, 10%, 50%);
+
+  a {
+    filter: brightness(0.5);
   }
 }
 

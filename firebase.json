@@ -8,6 +8,16 @@
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "rewrites": [ 
+      {
+        "source": "/credits",
+        "destination": "credits.html"
+      },
+      {
+        "source": "**",
+        "destination": "index.html"
+      } 
     ]
   },
   "emulators": {
