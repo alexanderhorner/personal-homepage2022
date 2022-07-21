@@ -20,6 +20,27 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 
+// google captcha
+const googlecaptchaBig = document.querySelector('.g-recaptcha.g-recaptcha--big')
+const googlecaptchaCompact = document.querySelector('.g-recaptcha.g-recaptcha--compact')
+
+// Responsive google captcha
+{
+  const setAttribute = () => {
+    if (window.innerWidth < 302 + 40) {
+      googlecaptchaBig.style.display = 'none'
+      googlecaptchaCompact.style.display = ''
+    } else {
+      googlecaptchaBig.style.display = ''
+      googlecaptchaCompact.style.display = 'none'
+    }
+  }
+  setAttribute()
+  window.addEventListener('resize', setAttribute);
+}
+
+
+
 // form
 const form = document.querySelector("form")
 let actionPath = 'https://europe-west1-personal-homepage2022.cloudfunctions.net/formSubmit'
@@ -32,7 +53,10 @@ form.addEventListener("submit", (e) => {
   
   document.querySelector(".submit").disabled = true;
 
+  const captchaResponse = grecaptcha.getResponse(window.captchaBig) || grecaptcha.getResponse(window.captchaSmall)
+
   const formData = new FormData(form)
+  formData.set("g-recaptcha-response", captchaResponse)
   const formDataJSON = JSON.stringify(Object.fromEntries(formData))
 
   fetch(actionPath, {
@@ -91,21 +115,3 @@ AOS.init();
 //   window.addEventListener('resize', setAattributes);
 // }
 
-// Responsive google captcha
-{
-  const googlecaptchaBig = document.querySelector('.g-recaptcha')
-  const googlecaptchaCompact = document.querySelector('.g-recaptcha.g-recaptcha--compact')
-
-
-  const setAttribute = () => {
-    if (window.innerWidth < 302 + 40) {
-      googlecaptchaBig.style.display = 'none'
-      googlecaptchaCompact.style.display = ''
-    } else {
-      googlecaptchaBig.style.display = ''
-      googlecaptchaCompact.style.display = 'none'
-    }
-  }
-  setAttribute()
-  window.addEventListener('resize', setAttribute);
-}

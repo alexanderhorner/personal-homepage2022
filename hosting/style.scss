@@ -270,7 +270,7 @@ header {
       grid-column: 2;
     }
 
-    @media only screen and (min-width: 500px) {
+    @media only screen and (min-width: 680px) {
       grid-template-rows: initial;
       grid-template-columns: 2fr 4fr;
       row-gap: 2em;
@@ -290,7 +290,7 @@ header {
     display: flex;
     align-items: center;
 
-    @media only screen and (min-width: 500px) { 
+    @media only screen and (min-width: 680px) { 
       grid-column: 1 / span 1;
     }
   }
@@ -315,7 +315,7 @@ header {
     box-shadow: none;
     margin-bottom: 20px;
 
-    @media only screen and (min-width: 500px) {
+    @media only screen and (min-width: 680px) {
       grid-column: 2 / span 1;
       margin-bottom: initial;
     }

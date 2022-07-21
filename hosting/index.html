@@ -23,9 +23,11 @@
 
     <link rel="stylesheet" href="./style.scss">
 
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
+    
+    <script src="https://www.google.com/recaptcha/api.js?onload=onCaptchaLoad&render=explicit" async defer></script>
     <script type="module" src="/main.js" defer></script>
+
+    
   </head>
   <body>
     <div class="real-height-indicator" style="pointer-events: none; opacity: 0; position: absolute; left: 0; top: 0; right: 0; bottom: 0;"></div>
@@ -79,8 +81,11 @@
   
           <span>Verification:</span>
           <div class="g-recaptcha-container">
-            <div class="g-recaptcha" data-sitekey="6Lep3wkgAAAAALx3J9nNMRyhR-HZjp2LPXB_WfeV"></div>
-            <div style="display: initial;" class="g-recaptcha g-recaptcha--compact" data-size="compact" data-sitekey="6Lep3wkgAAAAALx3J9nNMRyhR-HZjp2LPXB_WfeV"></div>
+            <div class="g-recaptcha g-recaptcha--big"></div>
+            <div class="g-recaptcha g-recaptcha--compact"></div>
+
+            <!-- <div class="g-recaptcha" data-theme="dark" data-sitekey="6Lep3wkgAAAAALx3J9nNMRyhR-HZjp2LPXB_WfeV"></div>
+            <div style="display: initial;" data-theme="dark" class="g-recaptcha g-recaptcha--compact" data-size="compact" data-sitekey="6Lep3wkgAAAAALx3J9nNMRyhR-HZjp2LPXB_WfeV"></div> -->
           </div>
           
           <label for="name">Name:</label>
@@ -97,7 +102,7 @@
   
         </form>
   
-        <img class="success" src="./img/success.svg" alt="">
+        <img data-aos="fade-up" data-aos-anchor="#contact h2" class="success" src="./img/success.svg" alt="">
       </section>
 
       <footer>
@@ -105,5 +110,30 @@
       </footer>
 
     </div>
+
+    <script>
+      const googlecaptchaBig = document.querySelector('.g-recaptcha.g-recaptcha--big')
+      const googlecaptchaCompact = document.querySelector('.g-recaptcha.g-recaptcha--compact')
+
+      const captchaParameters = {
+        theme: "dark",
+        sitekey: "6Lep3wkgAAAAALx3J9nNMRyhR-HZjp2LPXB_WfeV"
+      }
+
+      function onCaptchaLoad() {
+        window.captchaBig = grecaptcha.render(
+          googlecaptchaBig,
+          captchaParameters
+        )
+
+        window.captchaSmall = grecaptcha.render(
+          googlecaptchaCompact,
+          {
+            size: "compact",
+            ...captchaParameters
+          }
+        )
+      }
+    </script>
   </body>
 </html>
