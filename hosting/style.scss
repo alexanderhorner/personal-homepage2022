@@ -26,6 +26,23 @@ body {
   margin: 0;
 }
 
+a:not(header a) {
+  &:link {
+    color: hsl(274, 100%, 74%);
+    text-decoration: underline;
+  }
+  &:visited {
+    color: hsl(274, 100%, 74%);
+  }
+  &:hover {
+    color: hsl(274, 100%, 74%);
+    text-decoration: underline;
+  }
+  &:active {
+    color: hsl(274, 100%, 60%);
+  }
+}
+
 h2 {
   font-weight: bold;
   font-size: 3em;
@@ -348,25 +365,6 @@ header {
     width: 200px;
   }
 }
-
-a:not(header a) {
-  &:link {
-    color: hsl(274, 100%, 74%);
-    text-decoration: underline;
-  }
-  &:visited {
-    color: hsl(274, 100%, 74%);
-  }
-  &:hover {
-    color: hsl(274, 100%, 60%);
-    text-decoration: underline;
-  }
-  &:active {
-    color: hsl(274, 100%, 60%);
-  }
-}
-
-
 
 footer {
   text-align: center;

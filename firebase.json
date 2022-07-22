@@ -12,12 +12,8 @@
     "rewrites": [ 
       {
         "source": "/credits",
-        "destination": "credits.html"
-      },
-      {
-        "source": "**",
-        "destination": "index.html"
-      } 
+        "destination": "/credits.html"
+      }
     ]
   },
   "emulators": {
