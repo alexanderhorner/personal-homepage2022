@@ -9,6 +9,10 @@
   }
 }
 
+// Fix google cpathca iframe gap at bottom
+body > iframe {
+  display:none;
+} 
 
 * {
   box-sizing: border-box;
