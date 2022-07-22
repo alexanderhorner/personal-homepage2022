@@ -281,17 +281,11 @@ header {
     margin: 0 auto;
     display: grid;
     grid-template-columns: 20px 1fr 20px;
-    grid-template-rows: repeat(10, 40px auto);
+    grid-template-rows: repeat(5, 40px auto);
 
     * {
       grid-column: 2;
     }
-
-    .verification-text {
-      @media only screen and (min-width: 680px) {
-        grid-column: 1;
-      }
-    } 
 
     @media only screen and (min-width: 680px) {
       grid-template-rows: initial;
@@ -306,7 +300,7 @@ header {
     }
   }
 
-  label {
+  label, span  {
     font-size: 18px;
     height: 100%;
     max-height: 3.5rem;
@@ -314,7 +308,7 @@ header {
     align-items: center;
 
     @media only screen and (min-width: 680px) { 
-      grid-column: 1 / span 1;
+      grid-column: 1;
     }
   }
 
