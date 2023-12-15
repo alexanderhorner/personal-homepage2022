@@ -1,7 +1,7 @@
 @keyframes fadeIn {
   from {
     filter: blur(20px) opacity(0.5);
-    transform: translateY(0);
+    transform: translateY(-25px);
   }
   to {
     filter: blur(0) opacity(1);
@@ -156,10 +156,11 @@ header {
     padding-top: 12px;
     width: 50px;
     flex-direction: column;
-    display: none;
+    display: flex;
+    opacity: 0;
 
     @media only screen and (min-width: 600px) and (min-height: 600px) {
-      display: flex;
+      opacity: 1;
       grid-column: 2 / span 1;
       grid-row: 5 / span 1;
     }
