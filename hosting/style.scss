@@ -1,11 +1,11 @@
 @keyframes fadeIn {
   from {
     filter: blur(20px) opacity(0.5);
-    transform: translateY(-25px);
+    transform: translateY(0);
   }
   to {
     filter: blur(0) opacity(1);
-    transform: translateY(0px);
+    transform: translateY(0);
   }
 }
 
